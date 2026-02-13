@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soumyaa's Valentine's Invite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffd6e8 0%, #ffb3d9 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 900px;
+            height: 600px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                width: 90vw;
+                height: 90vh;
+                max-width: 900px;
+                max-height: 600px;
+            }
+
+            .greeting h1 {
+                font-size: 36px;
+                text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .greeting p {
+                font-size: 16px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+            .proceed-btn {
+                padding: 10px 28px;
+                font-size: 14px;
+            }
+
+            .question h2 {
+                font-size: 24px;
+            }
+
+            .question p {
+                font-size: 14px;
+            }
+
+            .buttons-group {
+                gap: 30px;
+            }
+
+            .choice-btn {
+                padding: 10px 28px;
+                font-size: 14px;
+            }
+
+            .mario {
+                width: 80px;
+                height: 100px;
+                bottom: 40px;
+                left: 30px;
+            }
+
+            .result-message {
+                font-size: 32px;
+                margin-bottom: 20px;
+                text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .result-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95vw;
+                height: 95vh;
+            }
+
+            .greeting h1 {
+                font-size: 24px;
+                margin-bottom: 15px;
+                line-height: 1.3;
+                word-break: break-word;
+                text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .greeting p {
+                font-size: 14px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+            .greeting {
+                margin-bottom: 30px;
+            }
+
+            .proceed-btn {
+                padding: 10px 24px;
+                font-size: 13px;
+            }
+
+            .question {
+                margin-bottom: 40px;
+            }
+
+            .question h2 {
+                font-size: 20px;
+                margin-bottom: 8px;                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);            }
+
+            .question p {
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .buttons-group {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .choice-btn {
+                padding: 10px 24px;
+                font-size: 13px;
+            }
+
+            .mario {
+                width: 60px;
+                height: 80px;
+                bottom: 30px;
+                left: 20px;
+            }
+
+            .result-message {
+                font-size: 24px;
+                margin-bottom: 15px;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+                word-break: break-word;
+                line-height: 1.3;
+                text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .result-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            body {
+                overflow: auto;
+            }
+
+            .greeting h1 {
+                font-size: 20px;
+                margin-bottom: 12px;
+                line-height: 1.3;
+                word-break: break-word;
+                text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .greeting p {
+                font-size: 13px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+            .greeting {
+                margin-bottom: 25px;
+            }
+
+            .proceed-btn {
+                padding: 9px 20px;
+                font-size: 12px;
+            }
+
+            .question {
+                margin-bottom: 35px;
+            }
+
+            .question h2 {
+                font-size: 18px;
+                margin-bottom: 6px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            }
+
+            .question p {
+                font-size: 12px;
+                white-space: normal;
+                word-break: break-word;
+            }
+
+            .buttons-group {
+                gap: 15px;
+            }
+
+            .choice-btn {
+                padding: 8px 20px;
+                font-size: 12px;
+            }
+
+            .mario {
+                width: 50px;
+                height: 65px;
+                bottom: 20px;
+                left: 15px;
+            }
+
+            .result-message {
+                font-size: 20px;
+                margin-bottom: 12px;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: clip;
+                word-break: break-word;
+                line-height: 1.3;
+                padding: 0 15px;
+                text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .result-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Intro Page */
+        .intro-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            z-index: 100;
+            animation: fadeOut 0.8s ease-in-out forwards;
+        }
+
+        .intro-page.active {
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
+
+        .intro-page.closing {
+            animation: fadeOut 0.8s ease-in-out forwards;
+            pointer-events: none;
+        }
+
+        .greeting {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .greeting h1 {
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 0px;
+        }
+
+        .greeting p {
+            font-size: 20px;
+            color: #ffff;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .proceed-btn {
+            padding: 12px 36px;
+            font-size: 16px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 16px rgba(255, 105, 180, 0.3);
+            letter-spacing: 0px;
+            border-radius: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .proceed-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 105, 180, 0.4);
+        }
+
+        .proceed-btn:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+        }
+
+        /* Prompt Page */
+        .prompt-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            z-index: 50;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .prompt-page.active {
+            opacity: 1;
+            pointer-events: auto;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .question {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2d1b4e;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            background: transparent;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .question h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            letter-spacing: 0px;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons-group {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            position: relative;
+            z-index: 999;
+            pointer-events: auto;
+            background: transparent;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .choice-btn {
+            padding: 12px 36px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            letter-spacing: 0px;
+            border-radius: 10px;
+            pointer-events: auto;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(239, 83, 80, 0.3);
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .choice-btn:hover.yes-btn {
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .choice-btn:hover.no-btn {
+            box-shadow: 0 8px 20px rgba(239, 83, 80, 0.4);
+        }
+
+        .choice-btn:active {
+            transform: translateY(0px);
+        }
+
+        .choice-btn:active.yes-btn {
+            box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+        }
+
+        .choice-btn:active.no-btn {
+            box-shadow: 0 2px 6px rgba(239, 83, 80, 0.3);
+        }
+
+        .choice-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Mario */
+        .mario {
+            position: absolute;
+            bottom: 60px;
+            left: 50px;
+            width: 100px;
+            height: 120px;
+            z-index: 60;
+            pointer-events: none;
+        }
+
+        .mario-sprite {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-image: url('mario.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border: none;
+            box-shadow: none;
+        }
+
+        .mario.running {
+            animation: marioRun 1.2s ease-in-out infinite;
+        }
+
+        .mario.jumping {
+            animation: marioJump 1s ease-out;
+        }
+
+        .mario.running-away {
+            animation: marioRunAway 3.5s ease-in forwards;
+        }
+
+        .mario.exiting {
+            animation: marioExit 1.5s ease-in forwards;
+        }
+
+        @keyframes marioRun {
+            0%, 49% { transform: scaleX(1); }
+            50%, 100% { transform: scaleX(-1); }
+        }
+
+        @keyframes marioJump {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-100px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes marioRunAway {
+            0% { left: 50px; transform: scaleX(1); }
+            100% { left: 300px; transform: scaleX(1); }
+        }
+
+        @keyframes marioExit {
+            0% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Result Page */
+        .result-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            z-index: 40;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .result-page.active {
+            opacity: 1;
+            pointer-events: auto;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .result-message {
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: 0px;
+            margin-bottom: 30px;
+            max-width: 90%;
+            padding: 0 20px;
+        }
+
+        .result-msg-decline {
+            color: #ffffff;
+        }
+
+        .result-image {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            display: none;
+        }
+
+        .result-image.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Intro Page -->
+        <div class="intro-page active">
+            <div class="greeting">
+                <h1>🌹 <br> SOUMYAA'S VALENTINE <br> 2026</h1>
+                <p>Will you be my Valentine?</p>
+            </div>
+            <button class="proceed-btn" type="button" onclick="startPrompt(); return false;">PROCEED</button>
+        </div>
+
+        <!-- Prompt Page -->
+        <div class="prompt-page">
+            <div class="question">
+                <h2>Be My Valentine?</h2>
+                <p style="font-size: 18px; margin-top: 10px;">Karan is asking</p>
+            </div>
+            <div class="buttons-group">
+                <button class="choice-btn yes-btn" type="button" onclick="console.log('YES clicked'); handleYes();">YES</button>
+                <button class="choice-btn no-btn" type="button" onclick="console.log('NO clicked'); handleNo();">NO</button>
+            </div>
+            <div class="mario">
+                <div class="mario-sprite"></div>
+            </div>
+        </div>
+
+        <!-- Result Page -->
+        <div class="result-page">
+            <div class="result-message" id="resultText">
+                YES! WAHOO!
+            </div>
+            <img class="result-image" id="resultImage" src="mario_rose_bg_removed.png" alt="Result image">
+        </div>
+    </div>
+
+    <script>
+        function startPrompt() {
+            console.log('startPrompt called');
+            const introPage = document.querySelector('.intro-page');
+            const promptPage = document.querySelector('.prompt-page');
+            
+            introPage.classList.add('closing');
+            
+            setTimeout(() => {
+                introPage.classList.remove('active');
+                promptPage.classList.add('active');
+                console.log('Prompt page is now active - buttons should be clickable');
+                const yesBtn = document.querySelector('.yes-btn');
+                const noBtn = document.querySelector('.no-btn');
+                console.log('Yes button:', yesBtn);
+                console.log('No button:', noBtn);
+                startMarioAnimation();
+            }, 800);
+        }
+
+        function startMarioAnimation() {
+            const mario = document.querySelector('.mario');
+            mario.classList.add('running');
+        }
+
+        function handleYes() {
+            console.log('handleYes function executed');
+            const mario = document.querySelector('.mario');
+            const promptPage = document.querySelector('.prompt-page');
+            const resultPage = document.querySelector('.result-page');
+            const resultImage = document.querySelector('#resultImage');
+            const yesBtn = document.querySelector('.yes-btn');
+            const noBtn = document.querySelector('.no-btn');
+            
+            yesBtn.disabled = true;
+            noBtn.disabled = true;
+            
+            promptPage.classList.remove('active');
+            resultPage.classList.add('active');
+            
+            resultImage.src = 'mario_rose_bg_removed.png';
+            resultImage.classList.add('show');
+            
+            mario.classList.remove('running');
+            mario.classList.add('running-away');
+            
+            setTimeout(() => {
+                mario.classList.remove('running-away');
+                mario.classList.add('jumping');
+                
+                let jumpCount = 0;
+                const jumpInterval = setInterval(() => {
+                    if (jumpCount >= 3) {
+                        clearInterval(jumpInterval);
+                        mario.style.display = 'none';
+                    } else {
+                        mario.classList.remove('jumping');
+                        setTimeout(() => {
+                            mario.classList.add('jumping');
+                        }, 50);
+                        jumpCount++;
+                    }
+                }, 1000);
+            }, 3500);
+        }
+
+        function handleNo() {
+            console.log('handleNo function executed');
+            const mario = document.querySelector('.mario');
+            const promptPage = document.querySelector('.prompt-page');
+            const resultPage = document.querySelector('.result-page');
+            const resultImage = document.querySelector('#resultImage');
+            const yesBtn = document.querySelector('.yes-btn');
+            const noBtn = document.querySelector('.no-btn');
+            
+            yesBtn.disabled = true;
+            noBtn.disabled = true;
+            
+            promptPage.classList.remove('active');
+            resultPage.classList.add('active');
+            mario.classList.add('exiting');
+            
+            const resultText = document.getElementById('resultText');
+            resultText.textContent = 'MAYBE NEXT TIME';
+            resultText.classList.add('result-msg-decline');
+            
+            resultImage.src = 'mario_sad_bg_removed.png';
+            resultImage.classList.add('show');
+        }
+    </script>
+</body>
+</html>
